@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="_Слой_1" data-name="Слой 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 606.79 408.82">
+  <defs>
+    <style>
+      .cls-1 {
+        font-family: Helvetica, Helvetica;
+        font-size: 57.13px;
+      }
+
+      .cls-1, .cls-2 {
+        fill: #8c6157;
+      }
+    </style>
+  </defs>
+  <path class="cls-2" d="M300.37,368.69c-153.88-1.36-242.88-111.98-253.63-125.83h0c18.91,18.21,110.69,102.72,254.43,103.52,146.53.81,240.32-85.96,258.72-103.7h0c-10.2,13.15-102.02,127.4-259.52,126.01Z"/>
+  <ellipse class="cls-2" cx="30.38" cy="230.54" rx="38.62" ry="28.03" transform="translate(-189.94 156.17) rotate(-63.84)"/>
+  <ellipse class="cls-2" cx="576.41" cy="230.54" rx="28.03" ry="38.62" transform="translate(-42.6 277.75) rotate(-26.16)"/>
+  <path class="cls-2" d="M302.69,408.82c-41.57.06-72.99-13.09-88.73-21,18.77,7.22,49.77,16.49,88.9,16.28,42.03-.23,74.84-11.29,93.85-19.35-15.64,8.52-49.07,24-94.02,24.06Z"/>
+  <ellipse class="cls-2" cx="189.08" cy="99.61" rx="55.68" ry="99.61"/>
+  <ellipse class="cls-2" cx="401.58" cy="99.61" rx="55.68" ry="99.61"/>
+  <g>
+    <text class="cls-1" transform="translate(210.02 309.5) rotate(10.26)"><tspan x="0" y="0">K</tspan></text>
+    <text class="cls-1" transform="translate(250.08 316.73) rotate(4.34)"><tspan x="0" y="0">E</tspan></text>
+    <text class="cls-1" transform="translate(291.75 319.68) rotate(-3.96)"><tspan x="0" y="0">B</tspan></text>
+    <text class="cls-1" transform="translate(331.95 316.62) rotate(-9.03)"><tspan x="0" y="0">A</tspan></text>
+    <text class="cls-1" transform="translate(370.93 310.33) rotate(-12.23)"><tspan x="0" y="0">B</tspan></text>
+  </g>
+</svg>
