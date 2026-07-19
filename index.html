@@ -30,6 +30,17 @@
 <script>
 const h = React.createElement;
 
+const SOCIAL_ICONS = {
+  tiktok:'<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.5 3c.3 2.2 1.6 3.6 3.7 3.8v2.5c-1.3.1-2.5-.3-3.7-1v6.1c0 4-3.4 6.6-7 5.5-2.4-.8-3.7-3.1-3.4-5.6.3-2.4 2.3-4.1 4.8-4.1.3 0 .5 0 .8.1v2.6c-.3-.1-.6-.1-.9-.1-1.2 0-2.2.9-2.3 2.1-.1 1.2.8 2.3 2 2.4 1.3.1 2.4-.9 2.4-2.2V3h3.6z"/></svg>',
+  facebook:'<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 8.5V6.8c0-.8.2-1.3 1.4-1.3H17V2.6c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.5-4 4.1v1.9H8v3h2.6V22h3.4v-8.5h2.6l.4-3H14z"/></svg>',
+  email:'<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>'
+};
+const SOCIAL_LINKS = [
+  {key:'tiktok',label:'TikTok',href:'https://www.tiktok.com/@smile.kebab'},
+  {key:'facebook',label:'Facebook',href:'https://www.facebook.com/Smilekebab.md'},
+  {key:'email',label:'Email',href:'mailto:smilekebab@gmail.com'}
+];
+
 const COPY = {
   ru: {
     navMenu:'Меню',navDelivery:'Доставка',navContact:'Контакты',
@@ -40,12 +51,12 @@ const COPY = {
     menuKicker:'Наше меню',menuTitle:'Популярные позиции',
     menuSub:'Готовим на огне, собираем при вас — классика и новинки каждый день.',
     menu:[
-      {ph:'фото · kebab clasic',name:'Классический кебаб',desc:'Маринованное мясо, свежие овощи, фирменный чесночный соус в тёплой лепёшке.',price:'55 lei',hot:true},
-      {ph:'фото · kebab pui',name:'Кебаб с курицей',desc:'Сочное куриное филе, хрустящие овощи и лёгкий йогуртовый соус.',price:'50 lei',hot:false},
-      {ph:'фото · döner mix',name:'Дёнер микс',desc:'Говядина и курица вместе, двойная порция мяса для большого голода.',price:'65 lei',hot:true},
-      {ph:'фото · falafel',name:'Фалафель',desc:'Хрустящие нутовые шарики, овощи и соус тахини — полностью вегетарианский.',price:'48 lei',hot:false},
-      {ph:'фото · cartofi',name:'Картофель фри',desc:'Золотистый картофель с морской солью и фирменной приправой.',price:'25 lei',hot:false},
-      {ph:'фото · limonadă',name:'Домашний лимонад',desc:'Освежающий лимонад с мятой, готовим каждое утро.',price:'30 lei',hot:false}
+      {ph:'фото · meniu kebab mic',name:'Меню с маленьким кебабом',desc:'Маленький кебаб, картофель фри и напиток на выбор.',price:'',hot:true},
+      {ph:'фото · meniu kebab mare',name:'Меню с большим кебабом',desc:'Большой кебаб, картофель фри и напиток на выбор.',price:'',hot:true},
+      {ph:'фото · kebab pui mare',name:'Куриный кебаб (большой)',desc:'Сочное куриное филе, свежие овощи и фирменный соус в большой лепёшке.',price:'65 lei',hot:false},
+      {ph:'фото · kebab pui mic',name:'Куриный кебаб (маленький)',desc:'Сочное куриное филе, свежие овощи и фирменный соус.',price:'55 lei',hot:false},
+      {ph:'фото · baget',name:'Багет',desc:'Хрустящий багет с сочной начинкой.',price:'',hot:false},
+      {ph:'фото · coca-cola',name:'Coca-Cola 0.5 л',desc:'Классическая освежающая Coca-Cola 0.5 л.',price:'',hot:false}
     ],
     deliveryKicker:'Доставка',deliveryTitle:'Привезём горячим за 30 минут',
     deliverySub:'Закажите онлайн или позвоните — соберём заказ, упакуем так, чтобы кебаб остался сочным, и доставим прямо к двери.',
@@ -55,7 +66,7 @@ const COPY = {
       {n:'3',title:'Встречайте курьера',body:'Готовим сразу после заказа и привозим в течение 30 минут.'}
     ],
     addressKicker:'Где нас найти',addressTitle:'Заходите в гости',
-    addressLabel:'Адрес',addressValue:'бул. Штефан чел Маре 100, Кишинёв',
+    addressLabel:'Адрес',addressValue:'Strada Alecu Russo 10/2, Chișinău, Moldova',
     hoursLabel:'Часы работы',hoursValue:'Ежедневно 10:00 — 23:00',hoursNote:'Пятница и суббота до 01:00',
     phoneLabel:'Телефон',mapPh:'карта · google maps',
     footerRights:'Все права защищены',
@@ -63,7 +74,7 @@ const COPY = {
     cartTitle:'Ваш заказ',cartEmpty:'Корзина пуста',cartEmptyHint:'Добавьте блюда из меню',
     cartTotalLabel:'Итого',checkout:'Оформить заказ',
     orderDone:'Заказ принят! Спасибо',orderDoneHint:'Баллы начислены на ваш счёт',
-    accountName:'Гость',accountPhone:'+373 60 000 000',
+    accountName:'Гость',accountPhone:'068 889 900',
     accountOrdersLabel:'Заказов',accountPointsLabel:'Баллов',accountSignIn:'Войти в профиль',
     pointsTitle:'Ваши баллы',pointsRule:'1 балл за каждые 10 lei в заказе',
     pointsToNextLabel:'до бесплатного кебаба',pointsReward:'500 баллов — кебаб в подарок',
@@ -88,12 +99,12 @@ const COPY = {
     menuKicker:'Meniul nostru',menuTitle:'Cele mai populare',
     menuSub:'Pregătit pe foc, asamblat în fața ta. Alege clasicul sau încearcă ceva nou.',
     menu:[
-      {ph:'foto · kebab clasic',name:'Kebab clasic',desc:'Carne marinată, legume proaspete și sos de usturoi în lipie caldă.',price:'55 lei',hot:true},
-      {ph:'foto · kebab pui',name:'Kebab cu pui',desc:'File de pui suculent, legume crocante și sos ușor de iaurt.',price:'50 lei',hot:false},
-      {ph:'foto · döner mix',name:'Döner mix',desc:'Vită și pui împreună, porție dublă de carne pentru poftă mare.',price:'65 lei',hot:true},
-      {ph:'foto · falafel',name:'Falafel',desc:'Chiftele crocante de năut, legume și sos tahini — complet vegetarian.',price:'48 lei',hot:false},
-      {ph:'foto · cartofi',name:'Cartofi prăjiți',desc:'Cartofi aurii cu sare de mare și condimentul nostru special.',price:'25 lei',hot:false},
-      {ph:'foto · limonadă',name:'Limonadă de casă',desc:'Limonadă răcoritoare cu mentă, preparată în fiecare dimineață.',price:'30 lei',hot:false}
+      {ph:'foto · meniu kebab mic',name:'Meniu cu kebab mic',desc:'Kebab mic, cartofi prăjiți și o băutură la alegere.',price:'',hot:true},
+      {ph:'foto · meniu kebab mare',name:'Meniu cu kebab mare',desc:'Kebab mare, cartofi prăjiți și o băutură la alegere.',price:'',hot:true},
+      {ph:'foto · kebab pui mare',name:'Kebab cu pui (mare)',desc:'File de pui suculent, legume proaspete și sos special în lipie mare.',price:'65 lei',hot:false},
+      {ph:'foto · kebab pui mic',name:'Kebab cu pui (mic)',desc:'File de pui suculent, legume proaspete și sos special.',price:'55 lei',hot:false},
+      {ph:'foto · baget',name:'Baghetă',desc:'Baghetă crocantă cu umplutură suculentă.',price:'',hot:false},
+      {ph:'foto · coca-cola',name:'Coca-Cola 0.5 l',desc:'Coca-Cola clasică răcoritoare 0.5 l.',price:'',hot:false}
     ],
     deliveryKicker:'Livrare',deliveryTitle:'Livrăm fierbinte în 30 de minute',
     deliverySub:'Comandă online sau sună-ne — pregătim comanda, o ambalăm ca să rămână suculentă și o aducem la ușa ta.',
@@ -103,7 +114,7 @@ const COPY = {
       {n:'3',title:'Întâmpină curierul',body:'Pregătim imediat după comandă și livrăm în 30 de minute.'}
     ],
     addressKicker:'Unde ne găsești',addressTitle:'Treci pe la noi',
-    addressLabel:'Adresă',addressValue:'bd. Ștefan cel Mare 100, Chișinău',
+    addressLabel:'Adresă',addressValue:'Strada Alecu Russo 10/2, Chișinău, Moldova',
     hoursLabel:'Program',hoursValue:'Zilnic 10:00 — 23:00',hoursNote:'Vineri și sâmbătă până la 01:00',
     phoneLabel:'Telefon',mapPh:'hartă · google maps',
     footerRights:'Toate drepturile rezervate',
@@ -111,7 +122,7 @@ const COPY = {
     cartTitle:'Comanda ta',cartEmpty:'Coșul e gol',cartEmptyHint:'Adaugă feluri din meniu',
     cartTotalLabel:'Total',checkout:'Plasează comanda',
     orderDone:'Comandă primită! Mulțumim',orderDoneHint:'Punctele au fost adăugate în cont',
-    accountName:'Oaspete',accountPhone:'+373 60 000 000',
+    accountName:'Oaspete',accountPhone:'068 889 900',
     accountOrdersLabel:'Comenzi',accountPointsLabel:'Puncte',accountSignIn:'Intră în cont',
     pointsTitle:'Punctele tale',pointsRule:'1 punct pentru fiecare 10 lei din comandă',
     pointsToNextLabel:'până la kebab gratuit',pointsReward:'500 de puncte — kebab cadou',
@@ -420,8 +431,8 @@ function App() {
             )
           ),
           h('div', {style:{display:'flex',gap:14,flexWrap:'wrap',alignItems:'center'}},
-            h('a', {href:'tel:+37360000000',style:{background:'#FF6A21',color:'#fff',textDecoration:'none',fontWeight:700,fontSize:17,padding:'16px 34px',borderRadius:999,boxShadow:'0 12px 30px rgba(255,106,33,.35)'}}, dCta),
-            h('span', {style:{fontFamily:"'Bricolage Grotesque',sans-serif",fontWeight:700,fontSize:22,color:'#fff'}}, '+373 60 000 000')
+            h('a', {href:'tel:068889900',style:{background:'#FF6A21',color:'#fff',textDecoration:'none',fontWeight:700,fontSize:17,padding:'16px 34px',borderRadius:999,boxShadow:'0 12px 30px rgba(255,106,33,.35)'}}, dCta),
+            h('span', {style:{fontFamily:"'Bricolage Grotesque',sans-serif",fontWeight:700,fontSize:22,color:'#fff'}}, '068 889 900')
           )
         ),
         h('div', {style:{display:'flex',flexDirection:'column',gap:14}},
@@ -456,7 +467,7 @@ function App() {
             ),
             h('div', null,
               h('div', {style:{fontSize:13,fontWeight:700,letterSpacing:'.12em',textTransform:'uppercase',color:'#A7997C',marginBottom:6}}, t.phoneLabel),
-              h('a', {href:'tel:+37360000000',style:{fontSize:19,fontWeight:700,color:'#FF6A21',textDecoration:'none'}}, '+373 60 000 000')
+              h('a', {href:'tel:068889900',style:{fontSize:19,fontWeight:700,color:'#FF6A21',textDecoration:'none'}}, '068 889 900')
             )
           )
         ),
@@ -474,6 +485,19 @@ function App() {
           h('div', null,
             h('div', {style:{fontFamily:"'Bricolage Grotesque',sans-serif",fontWeight:800,fontSize:24,letterSpacing:'-.02em'}}, 'Smile Kebab'),
             h('div', {style:{fontSize:14,fontWeight:600,opacity:.7}}, t.slogan)
+          )
+        ),
+        h('div', {style:{display:'flex',alignItems:'center',gap:12}},
+          SOCIAL_LINKS.map(s =>
+            h('a', {
+              key:s.key,
+              href:s.href,
+              'aria-label':s.label,
+              target:s.key==='email'?undefined:'_blank',
+              rel:s.key==='email'?undefined:'noopener noreferrer',
+              style:{display:'flex',alignItems:'center',justifyContent:'center',width:42,height:42,borderRadius:'50%',background:'#463325',color:'#FFC528',transition:'transform .15s ease'},
+              dangerouslySetInnerHTML:{__html:SOCIAL_ICONS[s.key]}
+            })
           )
         ),
         h('div', {style:{fontSize:14,fontWeight:600,opacity:.75}}, '© 2026 Smile Kebab · ', t.footerRights)
